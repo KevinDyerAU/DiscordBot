@@ -3,18 +3,19 @@ import discord
 
 import openai
 
-BOT_TOKEN = ""
+import os
+
+BOT_TOKEN = os.environ["DISCORD_TOKEN"]
 CHANNEL_ID = 1126741465893175336
 
-OPENAPI_API_KEY = ""
-openai.api_key=OPENAPI_API_KEY
+openai.api_key=os.environ["OPENAI_TOKEN"]
 
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
-    print("Hello! Study bot is ready!")
+    print("Hello! Bot is ready!")
     channel = bot.get_channel(CHANNEL_ID)
     await channel.send("Hello! UltronAI bot is ready!")
 
